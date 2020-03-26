@@ -1,16 +1,12 @@
 # DayOfWeekCollectionView
 
-![Example 1](/weekdaypicker.gif)
+![](https://github.com/zanew/DayOfWeekCollectionView/weekdaypicker.gif)
 
 A simple UI component for controlling which days of the week a thing is active on.
 
 ## Installation
 
 ### Swift Package Manager
-
-
-
-### CocoaPods
 
 ## Usage
 
@@ -27,4 +23,4 @@ picker.activeDays = .weekdaysOnly
 
 Produces:
 
-![Example 2](weekdays.png)
+![](weekdays.png)
