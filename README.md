@@ -25,8 +25,16 @@ Produces:
 ```swift
 picker.activeDays = [.saturday, .sunday]
 ```
-
 Produces:
 ![](weekends.png)
+
+### Styling
+```
+weekCollectionView.backgroundColor = .secondarySystemGroupedBackground
+weekCollectionView.badgeSelectionColor = .systemOrange
+```
+Produces:
+![](style.png)
+
 
 

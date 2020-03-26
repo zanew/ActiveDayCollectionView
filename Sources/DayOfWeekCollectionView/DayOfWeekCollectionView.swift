@@ -237,7 +237,11 @@ extension DayOfWeekDataSource {
 #else
 class DayOfWeekCollectionView: DayOfWeekCollectionViewBaseWrapper {
     var viewModel: DayOfWeekViewModel?
-    var badgeSelectionColor: UIColor?
+    var badgeSelectionColor: UIColor? {
+        didSet {
+            reloadData()
+        }
+    }
     
     var activeDays: DaysOfWeekActive? {
         get {
