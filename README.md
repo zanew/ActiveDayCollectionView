@@ -1,6 +1,6 @@
 # DayOfWeekCollectionView
 
-![Example 1](weekdaypicker.gif)
+![Example 1](/weekdaypicker.gif)
 
 A simple UI component for controlling which days of the week a thing is active on.
 
@@ -22,7 +22,7 @@ let activeDays = DaysOfWeekActive.weekdaysOnly
 let picker = DayOfWeekCollectionView(activeDays: activeDays)
 ```
 ```swift
-picker.activeDays = .w
+picker.activeDays = .weekdaysOnly
 ```
 
 Produces:
