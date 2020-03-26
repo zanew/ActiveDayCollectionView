@@ -8,6 +8,8 @@ A simple UI component for controlling which days of the week a thing is active o
 
 ### Swift Package Manager
 
+In Xcode got to File -> Swift Packages -> Add Package Dependency and paste inthe repo's url: https://github.com/AppPear/ChartView
+
 ## Usage
 
 The control is backed by an `OptionSet`.
