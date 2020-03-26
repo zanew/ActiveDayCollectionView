@@ -19,13 +19,11 @@ Example:
 let activeDays = DaysOfWeekActive.weekdaysOnly
 let weekCollectionView = DayOfWeekCollectionView(activeDays: activeDays)
 ```
-Produces:
 ![](weekdays.png)
 
 ```swift
 picker.activeDays = [.saturday, .sunday]
 ```
-Produces:
 ![](weekends.png)
 
 ### Styling
@@ -33,7 +31,6 @@ Produces:
 weekCollectionView.backgroundColor = .secondarySystemGroupedBackground
 weekCollectionView.badgeSelectionColor = .systemOrange
 ```
-Produces:
 ![](style.png)
 
 
