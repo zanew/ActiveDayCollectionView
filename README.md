@@ -1,6 +1,6 @@
 # DayOfWeekCollectionView
 
-![](https://github.com/zanew/DayOfWeekCollectionView/weekdaypicker.gif)
+![](https://github.com/zanew/DayOfWeekCollectionView/blob/master/weekdaypicker.gif)
 
 A simple UI component for controlling which days of the week a thing is active on.
 
