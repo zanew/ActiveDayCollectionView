@@ -15,12 +15,16 @@ The control is backed by an `OptionSet`.
 Example:
 ```swift
 let activeDays = DaysOfWeekActive.weekdaysOnly
-let picker = DayOfWeekCollectionView(activeDays: activeDays)
+let weekCollectionView = DayOfWeekCollectionView(activeDays: activeDays)
 ```
+Produces:
+![](weekdays.png)
+
 ```swift
-picker.activeDays = .weekdaysOnly
+picker.activeDays = [.saturday, .sunday]
 ```
 
 Produces:
+![](weekends.png)
 
-![](weekdays.png)
+
