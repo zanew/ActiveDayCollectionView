@@ -8,8 +8,12 @@
 import Foundation
 
 // MARK: library
-struct DaysOfWeekActive: OptionSet {
-    let rawValue: UInt
+public struct DaysOfWeekActive: OptionSet {
+    public let rawValue: UInt
+    
+    public init(rawValue: UInt) {
+        self.rawValue = rawValue
+    }
     
     static let sunday = DaysOfWeekActive(rawValue: 1 << 0)
     static let monday = DaysOfWeekActive(rawValue: 1 << 1)
@@ -22,10 +26,10 @@ struct DaysOfWeekActive: OptionSet {
     static let weekdaysOnly: DaysOfWeekActive = [.monday, .tuesday, .wednesday, .thursday, .friday]
 }
 
-class DayOfWeekViewModelBaseWrapper {
-    var weekdaySetting: DaysOfWeekActive
+public class DayOfWeekViewModelBaseWrapper {
+    public var weekdaySetting: DaysOfWeekActive
     
-    init(activeDays: DaysOfWeekActive) {
+    public init(activeDays: DaysOfWeekActive) {
         self.weekdaySetting = activeDays
     }
     
@@ -74,14 +78,14 @@ class DayOfWeekViewModelBaseWrapper {
 
 // MARK: library version
 #if !FULL_WEEKDAY_PICKER
-class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper {
+public class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper {
     func isDayOfWeekActive(dayOfWeek: DaysOfWeekActive) -> Bool {
         return weekdaySetting.contains(dayOfWeek)
     }
 }
 // MARK: personal support for themeing, etc. as part of https://github.com/zanew/HueCircadianSchedule
 #else
-class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper, ThemeUpdating, NightLightResponding, PeriodicUpdateRegistering {
+public class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper, ThemeUpdating, NightLightResponding, PeriodicUpdateRegistering {
     var theme: Theme {
         didSet {
             updateTheme?(theme)
@@ -90,9 +94,9 @@ class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper, ThemeUpdating, NightLig
     
     var updateTheme: ((Theme?) -> Void)?
     
-    var nightlight: Setting<Bool>?
+    public var nightlight: Setting<Bool>?
             
-    required init(withActiveDays activeDays: DaysOfWeekActive, nightLightSetting nightlight: Setting<Bool>) {
+    public required init(withActiveDays activeDays: DaysOfWeekActive, nightLightSetting nightlight: Setting<Bool>) {
         self.nightlight = nightlight
         theme = nightlight.valueDescriptor ?? false ? .nightLight : SolarTime.theme(forSolarTime: CircadianManager.sharedInstance.solarTime)
         super.init(activeDays: activeDays)

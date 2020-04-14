@@ -1,5 +1,5 @@
 //
-//  DayOfWeekCollectionViewCell.swift
+//  ActiveDayCollectionViewCell.swift
 //  Sol
 //
 //  Created by Zane Whitney on 3/10/20.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class DayOfWeekCollectionViewCell: UICollectionViewCell {
+class ActiveDayCollectionViewCell: UICollectionViewCell {
     fileprivate var dayAbbrevLabel: UILabel?
     var selectedBadge: UIView?
     var unselectedBadge: UIView?
