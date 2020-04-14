@@ -15,15 +15,15 @@ public struct DaysOfWeekActive: OptionSet {
         self.rawValue = rawValue
     }
     
-    static let sunday = DaysOfWeekActive(rawValue: 1 << 0)
-    static let monday = DaysOfWeekActive(rawValue: 1 << 1)
-    static let tuesday = DaysOfWeekActive(rawValue: 1 << 2)
-    static let wednesday = DaysOfWeekActive(rawValue: 1 << 3)
-    static let thursday = DaysOfWeekActive(rawValue: 1 << 4)
-    static let friday = DaysOfWeekActive(rawValue: 1 << 5)
-    static let saturday = DaysOfWeekActive(rawValue: 1 << 6)
+    public static let sunday = DaysOfWeekActive(rawValue: 1 << 0)
+    public static let monday = DaysOfWeekActive(rawValue: 1 << 1)
+    public static let tuesday = DaysOfWeekActive(rawValue: 1 << 2)
+    public static let wednesday = DaysOfWeekActive(rawValue: 1 << 3)
+    public static let thursday = DaysOfWeekActive(rawValue: 1 << 4)
+    public static let friday = DaysOfWeekActive(rawValue: 1 << 5)
+    public static let saturday = DaysOfWeekActive(rawValue: 1 << 6)
     
-    static let weekdaysOnly: DaysOfWeekActive = [.monday, .tuesday, .wednesday, .thursday, .friday]
+    public static let weekdaysOnly: DaysOfWeekActive = [.monday, .tuesday, .wednesday, .thursday, .friday]
 }
 
 public class DayOfWeekViewModelBaseWrapper {
