@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: library
-public struct DaysOfWeekActive: OptionSet {
+struct DaysOfWeekActive: OptionSet {
     let rawValue: UInt
     
     static let sunday = DaysOfWeekActive(rawValue: 1 << 0)
