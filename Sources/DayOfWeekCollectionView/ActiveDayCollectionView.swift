@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: shared functionality
-protocol IndexedControl {
+public protocol IndexedControl {
     var indexPath: IndexPath? { get set }
 }
 
@@ -126,7 +126,7 @@ public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, Interf
             
     var styleWithTheme: ((Theme?) -> Void)?
     
-    var viewModel: DayOfWeekViewModel?
+    public var viewModel: DayOfWeekViewModel?
     
     var cachedDayOfWeekViewCellStyle: ActiveDayCollectionViewCellStyle?
     
@@ -238,7 +238,7 @@ extension DayOfWeekDataSource {
 // MARK: library picker
 #else
 public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
-    var viewModel: DayOfWeekViewModel?
+    public var viewModel: DayOfWeekViewModel?
     public var badgeSelectionColor: UIColor? {
         didSet {
             reloadData()
