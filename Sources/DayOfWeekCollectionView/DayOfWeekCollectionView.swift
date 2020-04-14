@@ -14,7 +14,7 @@ protocol IndexedControl {
 }
 
 class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
-    class Constants {
+    internal class Constants {
         enum Spacings {
             static let weekdayIconDimension: CGFloat = 39
         }
