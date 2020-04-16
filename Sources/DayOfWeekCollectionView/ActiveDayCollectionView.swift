@@ -94,7 +94,7 @@ extension DayOfWeekFlowLayoutDelegate {
 // MARK: full picker
 #if FULL_WEEKDAY_PICKER
 extension ActiveDayCollectionView: IndexedControl {
-    var indexPath: IndexPath? {
+    public var indexPath: IndexPath? {
         get {
             return self.ip
         }
@@ -103,8 +103,6 @@ extension ActiveDayCollectionView: IndexedControl {
             self.ip = newValue
         }
     }
-    
-    
 }
 
 public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, InterfaceCreating {
@@ -204,7 +202,7 @@ extension ActiveDayCollectionView: ViewModelConfigurable {
 }
 
 extension DayOfWeekDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let weekdayView = collectionView as? ActiveDayCollectionView,
             let dayOfWeek = weekdayView.viewModel?.dayOfWeekAbbreviated(forIndexPath: indexPath) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActiveDayCollectionView.Constants.Identifiers.CellReuse.activeDayCollectionViewCell, for: indexPath) as? ActiveDayCollectionViewCell

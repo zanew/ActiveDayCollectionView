@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "DayOfWeekCollectionView",
             dependencies: [],
-            cSettings: [
+            swiftSettings: [
                 .define("FULL_WEEKDAY_PICKER"),
             ]),
         .testTarget(
