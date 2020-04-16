@@ -33,12 +33,12 @@ public class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
         }
     }
     
-    var weekdayLayoutDelegate: DayOfWeekFlowLayoutDelegate? {
+    public var weekdayLayoutDelegate: DayOfWeekFlowLayoutDelegate? {
         didSet {
             delegate = weekdayLayoutDelegate
         }
     }
-    var weekdayDataSource: DayOfWeekDataSource? {
+    public var weekdayDataSource: DayOfWeekDataSource? {
         didSet {
             dataSource = weekdayDataSource
         }
@@ -103,8 +103,6 @@ extension ActiveDayCollectionView: IndexedControl {
             self.ip = newValue
         }
     }
-    
-    
 }
 
 public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, InterfaceCreating {
@@ -128,7 +126,7 @@ public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, Interf
     
     public var viewModel: DayOfWeekViewModel?
     
-    var cachedDayOfWeekViewCellStyle: ActiveDayCollectionViewCellStyle?
+    public var cachedDayOfWeekViewCellStyle: ActiveDayCollectionViewCellStyle?
     
     public convenience init(viewModel: DayOfWeekViewModel, dataSource: DayOfWeekDataSource, flowLayoutDelegate: DayOfWeekFlowLayoutDelegate) {
         let horizontalLayout = UICollectionViewFlowLayout()
