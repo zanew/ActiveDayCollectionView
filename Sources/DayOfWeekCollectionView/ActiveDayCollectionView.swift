@@ -9,7 +9,7 @@
 import UIKit
 
 open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
-    internal class Constants {
+    public class Constants {
         enum Spacings {
             static let weekdayIconDimension: CGFloat = 39
         }

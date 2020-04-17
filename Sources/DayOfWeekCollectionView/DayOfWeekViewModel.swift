@@ -25,7 +25,7 @@ public struct DaysOfWeekActive: OptionSet {
     public static let weekdaysOnly: DaysOfWeekActive = [.monday, .tuesday, .wednesday, .thursday, .friday]
 }
 
-public class DayOfWeekViewModelBaseWrapper {
+open public class DayOfWeekViewModelBaseWrapper {
     public var weekdaySetting: DaysOfWeekActive
     
     public init(activeDays: DaysOfWeekActive) {
@@ -57,7 +57,7 @@ public class DayOfWeekViewModelBaseWrapper {
         return 7
     }
     
-    func isDayOfWeekActive(atIndexPath indexPath: IndexPath) -> Bool {
+    public func isDayOfWeekActive(atIndexPath indexPath: IndexPath) -> Bool {
         // if the 1s place bit is set, then the number will be odd
         return ((weekdaySetting.rawValue >> (indexPath.row)) % 2) == 1
     }
