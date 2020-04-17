@@ -15,7 +15,7 @@ open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
         }
         
         public enum Identifiers {
-            enum CellReuse {
+            public enum CellReuse {
                 static let genericCell = "genericCell"
                 static let activeDayCollectionViewCell = "weekdayCollectionViewCell"
             }
