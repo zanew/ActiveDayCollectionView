@@ -32,7 +32,7 @@ open class DayOfWeekViewModelBaseWrapper {
         self.weekdaySetting = activeDays
     }
     
-    func dayOfWeekAbbreviated(forIndexPath indexPath: IndexPath) -> String {
+    public func dayOfWeekAbbreviated(forIndexPath indexPath: IndexPath) -> String {
         switch (indexPath.row) {
         case 0:
             return "S"

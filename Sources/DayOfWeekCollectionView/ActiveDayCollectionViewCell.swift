@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ActiveDayCollectionViewCell: UICollectionViewCell {
+public class ActiveDayCollectionViewCell: UICollectionViewCell {
     fileprivate var dayAbbrevLabel: UILabel?
     var selectedBadge: UIView?
     var unselectedBadge: UIView?
