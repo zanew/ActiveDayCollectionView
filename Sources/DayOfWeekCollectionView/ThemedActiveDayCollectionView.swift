@@ -9,11 +9,7 @@
 import UIKit
 
 // MARK: shared functionality
-public protocol IndexedControl {
-    var indexPath: IndexPath? { get set }
-}
-
-public class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
+open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
     internal class Constants {
         enum Spacings {
             static let weekdayIconDimension: CGFloat = 39
@@ -52,14 +48,12 @@ public class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
         super.init(frame: frame, collectionViewLayout: layout)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-public class DayOfWeekDataSource: NSObject, UICollectionViewDataSource {
-    
-}
+public class DayOfWeekDataSource: NSObject, UICollectionViewDataSource {}
 
 extension DayOfWeekDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,13 +61,11 @@ extension DayOfWeekDataSource {
     }
 }
 
-public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {
-    
-}
+public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {}
 
 extension DayOfWeekFlowLayoutDelegate {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension)
+        return CGSize(width: DayOfWeekCollectionViewBaseWrapper.Constants.Spacings.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension)
     }
 }
 
@@ -91,150 +83,6 @@ extension DayOfWeekFlowLayoutDelegate {
     }
 }
 
-// MARK: full picker
-#if FULL_WEEKDAY_PICKER
-extension ActiveDayCollectionView: IndexedControl {
-    public var indexPath: IndexPath? {
-        get {
-            return self.ip
-        }
-
-        set {
-            self.ip = newValue
-        }
-    }
-}
-
-public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, InterfaceCreating {
-    var ip: IndexPath?
-    
-    func addSubviews() {
-    }
-    
-    func constrainElements() {
-    }
-
-    public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: layout)
-        register(ActiveDayCollectionViewCell.self, forCellWithReuseIdentifier: ActiveDayCollectionView.Constants.Identifiers.CellReuse.activeDayCollectionViewCell)
-        allowsMultipleSelection = true
-        backgroundColor = .white
-        initializeViewUpdaters()
-    }
-            
-    var styleWithTheme: ((Theme?) -> Void)?
-    
-    public var viewModel: DayOfWeekViewModel?
-    
-    public var cachedDayOfWeekViewCellStyle: ActiveDayCollectionViewCellStyle?
-    
-    public convenience init(viewModel: DayOfWeekViewModel, dataSource: DayOfWeekDataSource, flowLayoutDelegate: DayOfWeekFlowLayoutDelegate) {
-        let horizontalLayout = UICollectionViewFlowLayout()
-        horizontalLayout.scrollDirection = .horizontal
-        self.init(frame: .zero, collectionViewLayout: horizontalLayout)
-        initializeViewUpdaters()
-        configure(withViewModel: viewModel)
-        weekdayLayoutDelegate = flowLayoutDelegate
-        weekdayDataSource = dataSource
-    }
-    
-    func initializeViewUpdaters() {
-        styleWithTheme = {
-            [weak self] (theme: Theme?) in
-            guard let weakSelf = self, let theme = theme else {
-                return
-            }
-            
-            weakSelf.applyStandardStyles()
-            switch (theme) {
-            case .sunrise:
-                weakSelf.applyLightStyles()
-            case .morning:
-                weakSelf.applyLightStyles()
-            case .solarNoon:
-                weakSelf.applyLightStyles()
-            case .afternoon:
-                weakSelf.applyLightStyles()
-            case .sunset:
-                weakSelf.applyDarkStyles()
-            case .night:
-                weakSelf.applyDarkStyles()
-            case .nightLight:
-                weakSelf.applyDarkStyles()
-                weakSelf.applyNightLightStyles()
-            }
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-extension ActiveDayCollectionView {
-    fileprivate func applyStandardStyles() {
-        self.apply(style: ActiveDayCollectionViewStyle.light)
-    }
-    
-    fileprivate func applyLightStyles() {
-        self.apply(style: ActiveDayCollectionViewStyle.light)
-        cachedDayOfWeekViewCellStyle = .light
-    }
-    
-    fileprivate func applyDarkStyles() {
-        self.apply(style: ActiveDayCollectionViewStyle.night)
-        cachedDayOfWeekViewCellStyle = .night
-    }
-    
-    fileprivate func applyNightLightStyles() {
-        self.apply(style: ActiveDayCollectionViewStyle.nightLight)
-        cachedDayOfWeekViewCellStyle = .nightLight
-    }
-}
-
-extension ActiveDayCollectionView: ViewModelConfigurable {
-    func configure(withViewModel viewModel: DayOfWeekViewModel) {
-        self.viewModel = viewModel
-        self.viewModel?.updateTheme = styleWithTheme
-        styleWithTheme!(self.viewModel!.theme)
-        reloadData()
-    }
-}
-
-extension DayOfWeekDataSource {
-    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let weekdayView = collectionView as? ActiveDayCollectionView,
-            let dayOfWeek = weekdayView.viewModel?.dayOfWeekAbbreviated(forIndexPath: indexPath) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActiveDayCollectionView.Constants.Identifiers.CellReuse.activeDayCollectionViewCell, for: indexPath) as? ActiveDayCollectionViewCell
-            cell!.abbrevDayOfWeek = dayOfWeek
-            
-            let selectedBadge = UIView.init()
-            let unselectedBadge = UIView.init()
-            
-            selectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension, ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension) / 2.0
-            unselectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension, ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension) / 2.0
-            selectedBadge.clipsToBounds = true
-            unselectedBadge.clipsToBounds = true
-            selectedBadge.backgroundColor = weekdayView.cachedDayOfWeekViewCellStyle?.selectedBadgeColor
-            unselectedBadge.backgroundColor = weekdayView.cachedDayOfWeekViewCellStyle?.unselectedBadgeColor
-            
-            cell!.selectedBackgroundView = selectedBadge
-            cell!.backgroundView = unselectedBadge
-            
-            if weekdayView.viewModel?.isDayOfWeekActive(atIndexPath: indexPath) ?? false {
-                cell!.isSelected = true
-                weekdayView.selectItem(at: indexPath, animated: false, scrollPosition: .left)
-            }
-
-            return cell!
-        } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: ActiveDayCollectionView.Constants.Identifiers.CellReuse.genericCell, for: indexPath)
-        }
-    }
-}
-
-// MARK: library picker
-#else
 public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
     public var viewModel: DayOfWeekViewModel?
     public var badgeSelectionColor: UIColor? {
@@ -335,4 +183,3 @@ extension DayOfWeekDataSource {
         }
     }
 }
-#endif

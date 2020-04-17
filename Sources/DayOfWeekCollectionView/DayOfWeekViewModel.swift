@@ -63,6 +63,10 @@ public class DayOfWeekViewModelBaseWrapper {
         return ((weekdaySetting.rawValue >> (indexPath.row)) % 2) == 1
     }
     
+    func isDayOfWeekActive(dayOfWeek: DaysOfWeekActive) -> Bool {
+        return weekdaySetting.contains(dayOfWeek)
+    }
+    
     func setDayOfWeekActive(state: Bool, forIndexPath indexPath: IndexPath) {
         let day = DaysOfWeekActive.init(rawValue: (1 << indexPath.row))
         
@@ -76,36 +80,8 @@ public class DayOfWeekViewModelBaseWrapper {
     }
 }
 
-// MARK: library version
-#if !FULL_WEEKDAY_PICKER
 public class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper {
-    func isDayOfWeekActive(dayOfWeek: DaysOfWeekActive) -> Bool {
-        return weekdaySetting.contains(dayOfWeek)
-    }
+
 }
-// MARK: personal support for themeing, etc. as part of https://github.com/zanew/HueCircadianSchedule
-#else
-public class DayOfWeekViewModel: DayOfWeekViewModelBaseWrapper, ThemeUpdating, NightLightResponding, PeriodicUpdateRegistering {
-    var theme: Theme {
-        didSet {
-            updateTheme?(theme)
-        }
-    }
-    
-    var updateTheme: ((Theme?) -> Void)?
-    
-    public var nightlight: Setting<Bool>?
-            
-    public required init(withActiveDays activeDays: DaysOfWeekActive, nightLightSetting nightlight: Setting<Bool>) {
-        self.nightlight = nightlight
-        theme = nightlight.valueDescriptor ?? false ? .nightLight : SolarTime.theme(forSolarTime: CircadianManager.sharedInstance.solarTime)
-        super.init(activeDays: activeDays)
-    }
-    
-    func registerUpdaters() {
-        registerForSolarTimeUpdates()
-    }
-}
-#endif
 
 
