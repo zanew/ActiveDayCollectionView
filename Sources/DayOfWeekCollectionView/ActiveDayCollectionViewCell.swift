@@ -14,7 +14,7 @@ public class ActiveDayCollectionViewCell: UICollectionViewCell {
     var selectedBadge: UIView?
     var unselectedBadge: UIView?
     
-    var abbrevDayOfWeek: String? {
+    public var abbrevDayOfWeek: String? {
         didSet {
             if !contentView.hasSubview(ofType: UILabel.self) {
                 dayAbbrevLabel = .init(frame: bounds)
