@@ -25,7 +25,7 @@ public struct DaysOfWeekActive: OptionSet {
     public static let weekdaysOnly: DaysOfWeekActive = [.monday, .tuesday, .wednesday, .thursday, .friday]
 }
 
-open public class DayOfWeekViewModelBaseWrapper {
+open class DayOfWeekViewModelBaseWrapper {
     public var weekdaySetting: DaysOfWeekActive
     
     public init(activeDays: DaysOfWeekActive) {
