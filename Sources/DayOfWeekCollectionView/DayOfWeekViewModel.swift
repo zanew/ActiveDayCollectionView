@@ -7,7 +7,6 @@
 //
 import Foundation
 
-// MARK: library
 public struct DaysOfWeekActive: OptionSet {
     public let rawValue: UInt
     

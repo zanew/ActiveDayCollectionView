@@ -8,7 +8,6 @@
 
 import UIKit
 
-// MARK: shared functionality
 open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
     internal class Constants {
         enum Spacings {
