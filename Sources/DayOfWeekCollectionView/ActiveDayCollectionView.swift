@@ -11,13 +11,13 @@ import UIKit
 open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
     public class Constants {
         public enum Spacings {
-            static let weekdayIconDimension: CGFloat = 39
+            public static let weekdayIconDimension: CGFloat = 39
         }
         
         public enum Identifiers {
             public enum CellReuse {
-                static let genericCell = "genericCell"
-                static let activeDayCollectionViewCell = "weekdayCollectionViewCell"
+                public static let genericCell = "genericCell"
+                public static let activeDayCollectionViewCell = "weekdayCollectionViewCell"
             }
         }
         
