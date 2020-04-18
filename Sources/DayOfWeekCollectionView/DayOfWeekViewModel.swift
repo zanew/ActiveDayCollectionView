@@ -53,7 +53,7 @@ open class DayOfWeekViewModelBaseWrapper {
         }
     }
     
-    public var numberOfItems: Int {
+    open var numberOfItems: Int {
         return 7
     }
     
