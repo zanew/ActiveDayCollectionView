@@ -66,7 +66,7 @@ open class DayOfWeekViewModelBaseWrapper {
         return weekdaySetting.contains(dayOfWeek)
     }
     
-    func setDayOfWeekActive(state: Bool, forIndexPath indexPath: IndexPath) {
+    public func setDayOfWeekActive(state: Bool, forIndexPath indexPath: IndexPath) {
         let day = DaysOfWeekActive.init(rawValue: (1 << indexPath.row))
         
         if state {
