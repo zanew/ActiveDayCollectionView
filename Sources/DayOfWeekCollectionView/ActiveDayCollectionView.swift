@@ -33,7 +33,7 @@ open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
             delegate = weekdayLayoutDelegate
         }
     }
-    public var weekdayDataSource: DayOfWeekDataSource? {
+    open var weekdayDataSource: DayOfWeekDataSource? {
         didSet {
             dataSource = weekdayDataSource
         }
