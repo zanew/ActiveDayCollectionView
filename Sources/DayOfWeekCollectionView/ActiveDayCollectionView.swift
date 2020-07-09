@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
     public class Constants {
@@ -82,7 +83,19 @@ extension DayOfWeekFlowLayoutDelegate {
     }
 }
 
-public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
+final public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, UIViewRepresentable {
+    
+    public func makeUIView(context: Context) -> UICollectionView {
+        let activeDays = DaysOfWeekActive.weekdaysOnly
+        return ActiveDayCollectionView(activeDays: activeDays)
+    }
+    
+    public func updateUIView(_ uiView: UICollectionView, context: Context) {
+    }
+    
+    public typealias UIViewType = UICollectionView
+    
+    
     public var viewModel: DayOfWeekViewModel?
     public var badgeSelectionColor: UIColor? {
         didSet {
