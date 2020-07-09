@@ -12,7 +12,7 @@ import SwiftUI
 open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
     public class Constants {
         public enum Spacings {
-            public static let weekdayIconDimension: CGFloat = 39
+            public static let weekdayIconDimension: CGFloat = 34
         }
         
         public enum Identifiers {
