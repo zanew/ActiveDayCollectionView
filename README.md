@@ -17,7 +17,7 @@ The control is backed by an `OptionSet`.
 Example:
 ```swift
 let activeDays = DaysOfWeekActive.weekdaysOnly
-let weekCollectionView = DayOfWeekCollectionView(activeDays: activeDays)
+let weekCollectionView = ActiveDayCollectionView(activeDays: activeDays)
 ```
 ![](weekdays.png)
 
