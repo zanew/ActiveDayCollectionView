@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "DayOfWeekCollectionView",
+    name: "ActiveDayCollectionView",
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
-            name: "DayOfWeekCollectionView",
-            targets: ["DayOfWeekCollectionView"]),
+            name: "ActiveDayCollectionView",
+            targets: ["ActiveDayCollectionView"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -19,13 +19,13 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "DayOfWeekCollectionView",
+            name: "ActiveDayCollectionView",
             dependencies: [],
             swiftSettings: [
                 .define("FULL_WEEKDAY_PICKER"),
             ]),
         .testTarget(
-            name: "DayOfWeekCollectionViewTests",
-            dependencies: ["DayOfWeekCollectionView"]),
+            name: "ActiveDayCollectionViewTests",
+            dependencies: ["ActiveDayCollectionView"]),
     ]
 )

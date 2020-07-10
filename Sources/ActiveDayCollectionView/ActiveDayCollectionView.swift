@@ -1,5 +1,5 @@
 //
-//  DayOfWeekCollectionView.swift
+//  ActiveDayCollectionView.swift
 //  Sol
 //
 //  Created by Zane Whitney on 2/3/20.
@@ -9,7 +9,7 @@
 import UIKit
 import SwiftUI
 
-open class DayOfWeekCollectionViewBaseWrapper: UICollectionView {
+open class ActiveDayCollectionViewBaseWrapper: UICollectionView {
     public class Constants {
         public enum Spacings {
             public static let weekdayIconDimension: CGFloat = 34
@@ -65,7 +65,7 @@ public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlow
 
 extension DayOfWeekFlowLayoutDelegate {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: DayOfWeekCollectionViewBaseWrapper.Constants.Spacings.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension)
+        return CGSize(width: ActiveDayCollectionViewBaseWrapper.Constants.Spacings.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension)
     }
 }
 
@@ -105,7 +105,7 @@ public struct ActiveDayView: UIViewRepresentable {
     }
 }
 
-public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
+public class ActiveDayCollectionView: ActiveDayCollectionViewBaseWrapper {
 
     public var viewModel: DayOfWeekViewModel?
     public var badgeSelectionColor: UIColor? {

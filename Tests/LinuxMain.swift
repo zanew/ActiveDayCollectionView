@@ -1,7 +1,7 @@
 import XCTest
 
-import DayOfWeekCollectionViewTests
+import ActiveDayCollectionViewTests
 
 var tests = [XCTestCaseEntry]()
-tests += DayOfWeekCollectionViewTests.allTests()
+tests += ActiveDayCollectionViewTests.allTests()
 XCTMain(tests)
