@@ -1,4 +1,4 @@
-# DayOfWeekCollectionView
+# ActiveDayCollectionView
 
 ![](https://github.com/zanew/DayOfWeekCollectionView/blob/master/weekpicker.gif)
 
