@@ -83,19 +83,8 @@ extension DayOfWeekFlowLayoutDelegate {
     }
 }
 
-final public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper, UIViewRepresentable {
-    
-    public func makeUIView(context: Context) -> UICollectionView {
-        let activeDays = DaysOfWeekActive.weekdaysOnly
-        return ActiveDayCollectionView(activeDays: activeDays)
-    }
-    
-    public func updateUIView(_ uiView: UICollectionView, context: Context) {
-    }
-    
-    public typealias UIViewType = UICollectionView
-    
-    
+public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
+
     public var viewModel: DayOfWeekViewModel?
     public var badgeSelectionColor: UIColor? {
         didSet {
