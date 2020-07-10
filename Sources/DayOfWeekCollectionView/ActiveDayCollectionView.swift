@@ -85,7 +85,7 @@ extension DayOfWeekFlowLayoutDelegate {
 
 @available(iOS 13.0, *)
 public struct ActiveDayView: UIViewRepresentable {
-    @Binding var activeDays: DaysOfWeekActive
+    @Binding public var activeDays: DaysOfWeekActive
     
     public typealias UIViewType = ActiveDayCollectionView
     
