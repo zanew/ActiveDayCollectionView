@@ -85,6 +85,11 @@ extension DayOfWeekFlowLayoutDelegate {
 
 @available(iOS 13.0, *)
 public struct ActiveDayView: UIViewRepresentable {
+    
+    public init(activeDays: Binding<DaysOfWeekActive>) {
+        self._activeDays = activeDays
+    }
+    
     @Binding public var activeDays: DaysOfWeekActive
     
     public typealias UIViewType = ActiveDayCollectionView
@@ -99,6 +104,27 @@ public struct ActiveDayView: UIViewRepresentable {
         uiView.activeDays = activeDays
     }
 }
+
+//@available(iOS 13.0, *)
+//final class ActiveDayView: UIViewRepresentable {
+//    public init(activeDays: DaysOfWeekActive? = nil) {
+//        self.activeDays = activeDays
+//    }
+//
+//    public var activeDays: DaysOfWeekActive?
+//
+//    public typealias UIViewType = ActiveDayCollectionView
+//
+//    @available(iOS 13.0, *)
+//    public func makeUIView(context: Context) ->  ActiveDayCollectionView {
+//        return ActiveDayCollectionView()
+//    }
+//
+//    @available(iOS 13.0, *)
+//    public func updateUIView(_ uiView: ActiveDayCollectionView, context: Context) {
+//        uiView.activeDays = activeDays
+//    }
+//}
 
 public class ActiveDayCollectionView: DayOfWeekCollectionViewBaseWrapper {
 
