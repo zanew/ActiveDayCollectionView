@@ -8,7 +8,7 @@ A simple UI component for controlling which days of the week a thing is active o
 
 ### Swift Package Manager
 
-In Xcode got to File -> Swift Packages -> Add Package Dependency and paste in the repo's url: https://github.com/zanew/ActiveDayCollectionView
+In Xcode go to File -> Swift Packages -> Add Package Dependency and paste in the repo's url: https://github.com/zanew/ActiveDayCollectionView
 
 ## Usage
 
