@@ -31,12 +31,12 @@ picker.activeDays = [.saturday, .sunday]
 weekCollectionView.backgroundColor = .secondarySystemGroupedBackground
 weekCollectionView.badgeSelectionColor = .systemOrange
 ```
+![](style.png)
 
 ### SwiftUI
 ```
 ActiveDayView(activeDays: $activeDays)
 ```
-![](style.png)
 
 
 
