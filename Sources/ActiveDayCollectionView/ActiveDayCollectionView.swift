@@ -77,7 +77,7 @@ extension DayOfWeekFlowLayoutDelegate {
 //
 //        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
         
-        return UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100)
     }
     
     
