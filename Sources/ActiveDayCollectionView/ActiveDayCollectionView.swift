@@ -64,7 +64,7 @@ extension DayOfWeekDataSource {
 public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {}
 
 extension DayOfWeekFlowLayoutDelegate {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
                 
         //        let cellWidth = ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension
         //        let cellCount = 7
