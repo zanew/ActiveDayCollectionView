@@ -77,7 +77,7 @@ extension DayOfWeekFlowLayoutDelegate {
         //
         //        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
                 
-        return UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 100)
+        return UIEdgeInsets(top: 0, left: 400, bottom: 0, right: 0)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
