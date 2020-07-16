@@ -11,8 +11,9 @@ import SwiftUI
 
 open class ActiveDayCollectionViewBaseWrapper: UICollectionView {
     public class Constants {
-        public enum Spacings {
+        public enum Sizes {
             public static let weekdayIconDimension: CGFloat = 34
+            public static let cellSpacing: CGFloat = 10
         }
         
         public enum Identifiers {
@@ -41,7 +42,8 @@ open class ActiveDayCollectionViewBaseWrapper: UICollectionView {
     }
     
     public override var intrinsicContentSize: CGSize {
-        return .init(width: 414, height: 60)
+        let width = ((Constants.Sizes.weekdayIconDimension * 7) + (Constants.Sizes.cellSpacing * 6)) + 20
+        return .init(width: width, height: 60)
     }
     
     public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -64,8 +66,12 @@ extension DayOfWeekDataSource {
 public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlowLayout {}
 
 extension DayOfWeekFlowLayoutDelegate {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return ActiveDayCollectionView.Constants.Sizes.cellSpacing
+    }
+    
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let cellWidth = ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension
+        let cellWidth = ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension
         let cellCount = 7
         let spacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
 
@@ -79,7 +85,7 @@ extension DayOfWeekFlowLayoutDelegate {
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: ActiveDayCollectionViewBaseWrapper.Constants.Spacings.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension)
+        return CGSize(width: ActiveDayCollectionViewBaseWrapper.Constants.Sizes.weekdayIconDimension, height: ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension)
     }
 }
 
@@ -188,8 +194,8 @@ extension DayOfWeekDataSource {
             let selectedBadge = UIView.init()
             let unselectedBadge = UIView.init()
             
-            selectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension, ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension) / 2.0
-            unselectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension, ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension) / 2.0
+            selectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension, ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension) / 2.0
+            unselectedBadge.layer.cornerRadius = min(ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension, ActiveDayCollectionView.Constants.Sizes.weekdayIconDimension) / 2.0
             selectedBadge.clipsToBounds = true
             unselectedBadge.clipsToBounds = true
             
