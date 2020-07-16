@@ -65,19 +65,17 @@ public class DayOfWeekFlowLayoutDelegate: NSObject, UICollectionViewDelegateFlow
 
 extension DayOfWeekFlowLayoutDelegate {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-                
-        //        let cellWidth = ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension
-        //        let cellCount = 7
-        //
-        //        let totalCellWidth = cellWidth * cellCount
-        //        let totalSpacingWidth = 5 * (cellCount - 1)
-        //
-        //        let leftInset = (collectionView.intrinsicContentSize - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        //        let rightInset = leftInset
-        //
-        //        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-                
-        return UIEdgeInsets(top: 0, left: 200, bottom: 0, right: 0)
+        let cellWidth = ActiveDayCollectionView.Constants.Spacings.weekdayIconDimension
+        let cellCount = 7
+        let spacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
+
+        let totalCellWidth = cellWidth * CGFloat(cellCount)
+        let totalSpacingWidth = spacing * CGFloat(cellCount - 1)
+
+        let leftInset = (collectionView.intrinsicContentSize.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
     }
     
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
